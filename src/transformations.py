@@ -64,7 +64,7 @@ def raw_to_silver(df_bronze: DataFrame) -> DataFrame:
     """
     silver_df = (
         df_bronze
-        .filter(year(col("dtg")) >= 2003)
+        .filter(F.year(F.col("dtg")) >= 2003)
         .filter(F.col("location") == "260_T_a")
         # .filter(F.col("tx_dryb_10").between(-20,40))
         # .filter(F.col("tn_dryb_10").between(-20,40))
