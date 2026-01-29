@@ -66,8 +66,8 @@ def raw_to_silver(df_bronze: DataFrame) -> DataFrame:
         df_bronze
         .filter(F.year(F.col("dtg")) >= 2003)
         .filter(F.col("location") == "260_T_a")
-        # .filter(F.col("tx_dryb_10").between(-20,40))
-        # .filter(F.col("tn_dryb_10").between(-20,40))
+        .filter(F.col("tx_dryb_10").between(-20,40))
+        .filter(F.col("tn_dryb_10").between(-20,40))
         .withColumn("date", F.to_date(F.col("dtg")))
         .groupBy("location", "date").agg(
             F.max("tx_dryb_10").alias("max_temp"),
